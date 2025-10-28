@@ -1,6 +1,7 @@
 module "sg" {
   count = length(var.sg_names)
-  source = "../../terraform-aws-sg"
+  #source = "../../terraform-aws-sg"
+  source = "git::https://github.com/kdrajr/terraform-aws-sg.git?ref=main"
   project_name = var.project_name
   environment = var.environment
   sg_name = "${local.common_name_prefix}-${var.sg_names[count.index]}"
