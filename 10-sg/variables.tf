@@ -12,13 +12,13 @@ variable "sg_names" {
     # databases
     "mongodb", "mysql", "redis", "rabbitmq",
     # backend
-    # "catalogue", "user", "cart", "shipping", "payment",
-    # # frontend
-    # "frontend",
-    # # bastion
-    # "bastion",
-    # # frontend load balancer
-    # "frontend-lb"
+    "catalogue", "user", "cart", "shipping", "payment",
+    # frontend
+    "frontend",
+    # bastion
+    "bastion",
+    # frontend load balancer
+    "frontend-lb"
   ]
 }
 variable "sg_tags" {
