@@ -18,10 +18,12 @@ variable "sg_names" {
     # bastion
     "bastion",
     # frontend load balancer
-    "frontend-lb"
+    "frontend-lb",
+    # backend application load balancer
+    "backend-alb"
   ]
 }
 variable "sg_tags" {
-  type    = map(any)
+  type    = map
   default = {}
 }
