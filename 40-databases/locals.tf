@@ -5,6 +5,7 @@ locals {
   rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_id.value
   mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id
   database_subnet_id = split(",", data.aws_ssm_parameter.database_subnet_ids.value)[0]
+  ec2-user_pass = data.aws_ssm_parameter.ec2-user_pass.value
   
   common_name_prefix = "${var.project_name}-${var.environment}"
   common_tags = {

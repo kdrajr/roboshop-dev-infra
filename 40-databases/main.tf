@@ -21,7 +21,7 @@ resource "terraform_data" "database" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    password = "DevOps321"
+    password = local.ec2-user_pass
     host     = aws_instance.database[count.index].private_ip
   }
 
