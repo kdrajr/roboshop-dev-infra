@@ -38,6 +38,10 @@ data "aws_ssm_parameter" "database_subnet_ids" {
   name = "/${var.project_name}/${var.environment}/database_subnet_ids"
 }
 
+data "aws_route53_zone" "sniggie" {
+      name = var.domain_name 
+}
+
 data "aws_ssm_parameter" "ec2-user_pass" {
   name = "/roboshop/ec2-user"
 }
