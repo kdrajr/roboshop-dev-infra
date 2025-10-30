@@ -16,13 +16,13 @@ resource "aws_instance" "database" {
 
 resource "terraform_data" "database" {
   count = length(var.database)
-  triggers_replace =  [aws_instance.database.id]
+  triggers_replace =  [aws_instance.database[count.index].id]
     
   connection {
     type     = "ssh"
     user     = "ec2-user"
     password = "DevOps321"
-    host     = aws_instance.database.private_ip
+    host     = aws_instance.database[count.index].private_ip
   }
 
   provisioner "file" {
