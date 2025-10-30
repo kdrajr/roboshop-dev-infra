@@ -15,7 +15,7 @@ touch ansible.log
 
 cd $ANSIBLE_DIR
 
-if[ -d $REPO_DIR]; then
+if [ -d $REPO_DIR ]; then
     cd $REPO_DIR
     git pull
 else
