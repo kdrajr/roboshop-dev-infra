@@ -12,7 +12,7 @@ variable "environment" {
 }
 
 variable "database" {
-  default = ["mongodb","redis","rabbimq"]
+  default = ["mongodb","redis","rabbitmq"]
 }
 
 variable "ec2_tags" {
