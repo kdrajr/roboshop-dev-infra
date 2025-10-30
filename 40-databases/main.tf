@@ -9,7 +9,7 @@ resource "aws_instance" "database" {
     var.ec2_tags,
     local.common_tags,
     {
-      Name = "${local.common_name_prefix}-${var.database}"
+      Name = "${local.common_name_prefix}-${var.database[count.index]}"
     }
   )
 }
