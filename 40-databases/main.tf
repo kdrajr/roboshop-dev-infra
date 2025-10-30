@@ -1,4 +1,5 @@
-resource "aws_instance" "mongodb" {
+resource "aws_instance" "database" {
+  count = length(var.database)
   ami = local.ami_id
   instance_type = var.instance_type
   vpc_security_group_ids = [local.mongodb_sg_id]
@@ -8,20 +9,20 @@ resource "aws_instance" "mongodb" {
     var.ec2_tags,
     local.common_tags,
     {
-      Name = "${local.common_name_prefix}-mongodb"
+      Name = "${local.common_name_prefix}-${var.database}"
     }
   )
 }
 
-resource "terraform_data" "mongodb" {
-  # Changes to any instance of the cluster requires re-provisioning
-  triggers_replace =  [aws_instance.mongodb.id]
+resource "terraform_data" "database" {
+  count = length(var.database)
+  triggers_replace =  [aws_instance.database.id]
     
   connection {
     type     = "ssh"
     user     = "ec2-user"
     password = "DevOps321"
-    host     = aws_instance.mongodb.private_ip
+    host     = aws_instance.database.private_ip
   }
 
   provisioner "file" {
@@ -32,7 +33,7 @@ resource "terraform_data" "mongodb" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo sh /tmp/bootstrap.sh mongodb dev"
+      "sudo sh /tmp/bootstrap.sh ${var.database} ${var.environment}"
 
     ]
   }
