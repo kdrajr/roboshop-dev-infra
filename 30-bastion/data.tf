@@ -29,3 +29,7 @@ data "aws_ssm_parameter" "public_subnet_ids" {
 data "aws_ssm_parameter" "ec2-user_pass" {
   name = "/roboshop/ec2-user"
 }
+
+data "aws_iam_policy" "AdministratorAccess" {
+  arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
