@@ -9,3 +9,7 @@ variable "environment" {
 variable "backend-alb_tags" {
   default = {}
 }
+
+variable "domain_name" {
+  default = "sniggie.fun"
+}

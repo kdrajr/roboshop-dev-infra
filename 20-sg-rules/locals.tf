@@ -5,5 +5,6 @@ locals {
   redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
   mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id.value
   rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_id.value
+  catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
   backend-alb_sg_id = data.aws_ssm_parameter.backend-alb_sg_id.value
 }
