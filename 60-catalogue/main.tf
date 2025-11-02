@@ -146,6 +146,12 @@ resource "aws_autoscaling_group" "catalogue" {
     delete = "15m"
   }
 
+  tag {
+    key                 = "Name"
+    value               = "${local.common_name_prefix}-catalogue"
+    propagate_at_launch = true
+  }
+
   dynamic "tag" {
     for_each = merge(
       local.common_tags,
