@@ -199,14 +199,14 @@ resource "aws_lb_listener_rule" "backend_catalogue" {
 }
 
 
-  resource "terraform_data" "terminate_catalogue_instance" {
-      triggers_replace = [aws_instance.catalogue.id]
+resource "terraform_data" "terminate_catalogue_instance" {
+    triggers_replace = [aws_instance.catalogue.id]
 
-      provisioner "local-exec" {
-        command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id}"
-      }
-      depends_on = [aws_autoscaling_group.catalogue]
+    provisioner "local-exec" {
+      command = "aws ec2 terminate-instances --instance-ids ${aws_instance.catalogue.id}"
     }
+    depends_on = [aws_autoscaling_group.catalogue]
+}
 
 
 

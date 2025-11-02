@@ -27,26 +27,5 @@ variable "volume_tags" {
   default = {}
 }
 
-variable "catalogue_target-grp_tags" {
-  default = {}
-}
 
-variable "asg_tags" {
-  default = [
-    {
-      key                 = "Name"
-      value               = "${local.common_name_prefix}-catalogue"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "Environment"
-      value               = "dev"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "Project"
-      value               = "roboshop"
-      propagate_at_launch = true
-    },
-  ]
-}
+

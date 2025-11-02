@@ -11,7 +11,7 @@ REPO_DIR=ansible-roboshop-roles-tf
 dnf install ansible -y
 mkdir -p $ANSIBLE_DIR
 mkdir -p /var/log/roboshop
-touch ansible.log
+touch /var/log/roboshop/ansible.log
 
 cd $ANSIBLE_DIR
 
