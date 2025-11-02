@@ -128,6 +128,7 @@ resource "aws_lb_target_group" "catalogue" {
 }
 
 resource "aws_autoscaling_group" "catalogue" {
+  name = "${local.common_name_prefix}-catalogue"
   desired_capacity   = 1
   max_size           = 2
   min_size           = 1
@@ -144,12 +145,6 @@ resource "aws_autoscaling_group" "catalogue" {
 
   timeouts {
     delete = "15m"
-  }
-
-  tag {
-    key                 = "Name"
-    value               = "${local.common_name_prefix}-catalogue"
-    propagate_at_launch = true
   }
 
   dynamic "tag" {
