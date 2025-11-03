@@ -48,14 +48,14 @@ resource "aws_security_group_rule" "catalogue_bastion" {
   source_security_group_id = local.bastion_sg_id  
 }
 
-## Bastion to frontend sg rule
-resource "aws_security_group_rule" "frontend_bastion" {
+## Internet to frontend sg rule
+resource "aws_security_group_rule" "frontend_internet" {
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   security_group_id = local.frontend_sg_id
-  source_security_group_id = local.bastion_sg_id  
+  cidr_blocks       = ["0.0.0.0/0"]  
 }
 
 ## Bastion to rabbitmq sg rule
@@ -108,21 +108,21 @@ resource "aws_security_group_rule" "frontend_frontend-alb" {
   source_security_group_id = local.frontend-alb_sg_id
 }
 
-## Bastion to frontend-alb sg rule
-resource "aws_security_group_rule" "frontend-alb_bastion" {
+## Internet to frontend-alb sg rule
+resource "aws_security_group_rule" "frontend-alb_internet" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
   security_group_id = local.frontend-alb_sg_id
-  source_security_group_id = local.bastion_sg_id  
+  cidr_blocks       = ["0.0.0.0/0"]  
 }
 
 ## frontend to backend-alb sg rule
 resource "aws_security_group_rule" "backend-alb_frontend" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
   security_group_id = local.backend-alb_sg_id
   source_security_group_id = local.frontend_sg_id
