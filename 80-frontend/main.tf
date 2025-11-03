@@ -190,7 +190,7 @@ resource "aws_lb_listener_rule" "frontend-lb_frontend" {
 
   condition {
     host_header {
-      values = ["frontend-${var.environment}.${var.domain_name}"] # frontend-dev.sniggie.fun
+      values = ["${var.environment}.${var.domain_name}"] # dev.sniggie.fun
     }
   }
 
