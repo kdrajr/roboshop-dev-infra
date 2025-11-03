@@ -180,7 +180,7 @@ resource "aws_autoscaling_policy" "frontend" {
 
 
 resource "aws_lb_listener_rule" "frontend-lb_frontend" {
-  listener_arn = local.frontend-lb_listener_arn
+  listener_arn = local.frontend-alb_listener_arn
   priority = 10
 
   action {

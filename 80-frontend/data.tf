@@ -22,8 +22,8 @@ data "aws_ssm_parameter" "vpc_id" {
   name = "/${var.project_name}/${var.environment}/vpc_id"
 }
 
-data "aws_ssm_parameter" "frontend-lb_listener_arn" {
-  name = "/${var.project_name}/${var.environment}/frontend-lb_listener_arn"
+data "aws_ssm_parameter" "frontend-alb_listener_arn" {
+  name = "/${var.project_name}/${var.environment}/frontend-alb_listener_arn"
 }
 
 data "aws_ssm_parameter" "frontend_sg_id" {
