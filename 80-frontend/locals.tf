@@ -1,10 +1,10 @@
 locals {
   ami_id = data.aws_ami.devops.id
   vpc_id  = data.aws_ssm_parameter.vpc_id.value
-  backend-lb_listener_arn = data.aws_ssm_parameter.backend-lb_listener_arn.value
-  catalogue_sg_id = data.aws_ssm_parameter.catalogue_sg_id.value
-  private_subnet_id = split(",", data.aws_ssm_parameter.private_subnet_ids.value)[0]
-  private_subnet_ids = split(",", data.aws_ssm_parameter.private_subnet_ids.value)
+  frontend-lb_listener_arn = data.aws_ssm_parameter.frontend-lb_listener_arn.value
+  frontend_sg_id = data.aws_ssm_parameter.frontend_sg_id.value
+  public_subnet_id = split(",", data.aws_ssm_parameter.public_subnet_ids.value)[0]
+  public_subnet_ids = split(",", data.aws_ssm_parameter.public_subnet_ids.value)
   ec2-user_pass = data.aws_ssm_parameter.ec2-user_pass.value
   zone_id = data.aws_route53_zone.sniggie.zone_id
   

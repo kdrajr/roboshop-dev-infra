@@ -26,6 +26,14 @@ data "aws_ssm_parameter" "catalogue_sg_id" {
   name = "/${var.project_name}/${var.environment}/catalogue_sg_id"
 }
 
+data "aws_ssm_parameter" "frontend_sg_id" {
+  name = "/${var.project_name}/${var.environment}/frontend_sg_id"
+}
+
 data "aws_ssm_parameter" "backend-alb_sg_id" {
   name = "/${var.project_name}/${var.environment}/backend-alb_sg_id"
+}
+
+data "aws_ssm_parameter" "frontend-alb_sg_id" {
+  name = "/${var.project_name}/${var.environment}/frontend-alb_sg_id"
 }
