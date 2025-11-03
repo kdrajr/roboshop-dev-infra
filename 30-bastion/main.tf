@@ -44,7 +44,7 @@ resource "aws_iam_role" "bastion" {
 })
 
   tags = {
-    tag-key = "bastion"
+    Name = "BastionTerraformAdmin"
   }
 }
 
