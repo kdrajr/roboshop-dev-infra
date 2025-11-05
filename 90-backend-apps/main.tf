@@ -10,7 +10,7 @@ module "user" {
   private_subnet_ids = local.private_subnet_ids
   ec2-user_pass = local.ec2-user_pass
   backend-alb_listener_arn = local.backend-alb_listener_arn
-  priority = var.rule_priority
+  rule_priority = var.rule_priority
 }
 
 
