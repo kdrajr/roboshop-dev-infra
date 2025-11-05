@@ -1,5 +1,6 @@
 module "user" {
-  source = "../../roboshop-terraform-modules/backend-app"
+  #source = "../../roboshop-terraform-modules/backend-app"
+  source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//backend-app?ref=main"
   ami_id = local.ami_id
   instance_type = var.instance_type
   component = var.component 
