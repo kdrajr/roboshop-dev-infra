@@ -19,6 +19,10 @@ variable "component" {
   default = "user"
 }
 
+variable "rule_priority" {
+  default = 20
+}
+
 variable "ec2_tags" {
   default = {}
 }
