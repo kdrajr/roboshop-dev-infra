@@ -48,6 +48,16 @@ resource "aws_security_group_rule" "catalogue_bastion" {
   source_security_group_id = local.bastion_sg_id  
 }
 
+## Bastion to user sg rule
+resource "aws_security_group_rule" "user_bastion" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  security_group_id = local.user_sg_id
+  source_security_group_id = local.bastion_sg_id  
+}
+
 ## Internet to frontend sg rule
 resource "aws_security_group_rule" "frontend_internet" {
   type              = "ingress"
@@ -96,6 +106,26 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
   protocol          = "tcp"
   security_group_id = local.mongodb_sg_id
   source_security_group_id = local.catalogue_sg_id  
+}
+
+## user to mongodb sg rule
+resource "aws_security_group_rule" "mongodb_user" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  security_group_id = local.mongodb_sg_id
+  source_security_group_id = local.user_sg_id
+}
+
+## user to redis sg rule
+resource "aws_security_group_rule" "redis_user" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  security_group_id = local.redis_sg_id
+  source_security_group_id = local.user_sg_id
 }
 
 ## frontend-alb to frontend sg rule
