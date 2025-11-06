@@ -1,16 +1,15 @@
-module "user" {
-  #source = "../../roboshop-terraform-modules/backend-app"
-  source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//backend-app?ref=main"
+module "component" {
+  for_each = var.components
+  source = "../../roboshop-terraform-modules/components"
+  #source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//backend-app?ref=main"
+  component = each.key 
   ami_id = local.ami_id
   instance_type = var.instance_type
-  component = var.component 
-  component_sg_id = local.user_sg_id
-  vpc_id = local.vpc_id
-  private_subnet_id = local.private_subnet_id
-  private_subnet_ids = local.private_subnet_ids
   ec2-user_pass = local.ec2-user_pass
-  backend-alb_listener_arn = local.backend-alb_listener_arn
-  rule_priority = var.rule_priority
+  rule_priority = each.value.rule_priority
+  asg_desired_capacity = var.asg_desired_capacity
+  asg_max_size = var.asg_max_size
+  asg_min_size = var.asg_min_size
 }
 
 
