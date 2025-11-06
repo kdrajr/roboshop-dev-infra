@@ -1,4 +1,4 @@
-data "aws_ssm_parameter" "vpc_id" {
+/* data "aws_ssm_parameter" "vpc_id" {
   name = "/${var.project_name}/${var.environment}/vpc_id"
 }
 
@@ -12,4 +12,4 @@ data "aws_ssm_parameter" "private_subnet_ids" {
 
 data "aws_route53_zone" "sniggie" {
       name = var.domain_name 
-}
+} */

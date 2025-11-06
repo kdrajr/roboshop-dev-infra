@@ -18,7 +18,7 @@ data "aws_ami" "devops" {
   }
 }
 
-data "aws_ssm_parameter" "mongodb_sg_id" {
+/* data "aws_ssm_parameter" "mongodb_sg_id" {
   name = "/${var.project_name}/${var.environment}/mongodb_sg_id"
 }
 
@@ -45,3 +45,4 @@ data "aws_route53_zone" "sniggie" {
 data "aws_ssm_parameter" "ec2-user_pass" {
   name = "/roboshop/ec2-user"
 }
+ */

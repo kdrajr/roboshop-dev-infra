@@ -25,5 +25,6 @@ touch /var/log/roboshop/ansible.log
 
 # ansible-playbook -i inventory.ini -e component=$component -e env=$environment main.yaml
 
-ansible-pull - U https://github.com/kdrajr/ansible-roboshop-roles-tf.git -e component=$component -e env=$environment main.yaml
+ansible-pull -U https://github.com/kdrajr/ansible-roboshop-roles-tf.git -e component=$component -e env=$environment main.yaml
+
 
