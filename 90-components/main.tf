@@ -1,7 +1,7 @@
 module "component" {
   for_each = var.components
-  source = "../../roboshop-terraform-modules/components"
-  #source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//backend-app?ref=main"
+  #source = "../../roboshop-terraform-modules/components"
+  source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//components?ref=main"
   component = each.key 
   ami_id = local.ami_id
   instance_type = var.instance_type

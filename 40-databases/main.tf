@@ -1,6 +1,7 @@
 module "db" {
   for_each = var.db-components
-  source = "../../roboshop-terraform-modules/databases"
+  #source = "../../roboshop-terraform-modules/databases"
+  source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//databases?ref=main"
   ami_id = local.ami_id
   instance_type = var.instance_type
   db-component = each.key
