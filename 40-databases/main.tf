@@ -1,4 +1,44 @@
-resource "aws_instance" "mongodb" {
+module "db" {
+  for_each = var.db-components
+  source = "../../roboshop-terraform-modules/databases"
+  ami_id = local.ami_id
+  instance_type = var.instance_type
+  db-component = each.key
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* resource "aws_instance" "mongodb" {
   ami = local.ami_id
   instance_type = var.instance_type
   vpc_security_group_ids = [local.mongodb_sg_id]
@@ -200,7 +240,7 @@ resource "aws_iam_instance_profile" "mysql" {
   name = "mysql"
   role = "Ec2SSMParameterRead"
 }
-
+ */
 
 
 

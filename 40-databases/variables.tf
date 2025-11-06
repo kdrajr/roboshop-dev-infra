@@ -15,9 +15,14 @@ variable "domain_name" {
   default = "sniggie.fun"
 }
 
-/* variable "db" {
-  default = ["mongodb","redis","rabbitmq","mysql"]
-} */
+variable "db-components" {
+  default = {
+    mongodb = null
+    redis = null
+    rabbitmq = null
+    mysql = null
+  }
+}
 
 variable "ec2_tags" {
   default = {}
