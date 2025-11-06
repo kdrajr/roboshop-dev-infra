@@ -1,4 +1,33 @@
-resource "aws_lb" "backend_alb" {
+module "backend_alb" {
+  source = "../../roboshop-terraform-modules/alb"
+  is_it_internal = true
+  #enable_deletion_protection = false
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* resource "aws_lb" "backend_alb" {
   name               = "${local.common_name_prefix}-backend-alb"
   internal           = true
   load_balancer_type = "application"
@@ -47,3 +76,4 @@ resource "aws_route53_record" "backend_alb" {
 }
 
 
+ */
