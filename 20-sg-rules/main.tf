@@ -129,6 +129,58 @@ resource "aws_security_group_rule" "catalogue_backend-alb" {
   source_security_group_id = local.backend-alb_sg_id
 }
 
+## backend-alb to user sg rule
+resource "aws_security_group_rule" "user_backend-alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  security_group_id = local.user_sg_id
+  source_security_group_id = local.backend-alb_sg_id
+}
+
+## backend-alb to cart sg rule
+resource "aws_security_group_rule" "cart_backend-alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  security_group_id = local.cart_sg_id
+  source_security_group_id = local.backend-alb_sg_id
+}
+
+## backend-alb to shipping sg rule
+resource "aws_security_group_rule" "shipping_backend-alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  security_group_id = local.shipping_sg_id
+  source_security_group_id = local.backend-alb_sg_id
+}
+
+
+## backend-alb to payment sg rule
+resource "aws_security_group_rule" "payment_backend-alb" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  security_group_id = local.payment_sg_id
+  source_security_group_id = local.backend-alb_sg_id
+}
+
+
+## payment to rabbitmq sg rule
+resource "aws_security_group_rule" "rabbitmq_payment" {
+  type              = "ingress"
+  from_port         = 5672
+  to_port           = 5672
+  protocol          = "tcp"
+  security_group_id = local.rabbitmq_sg_id
+  source_security_group_id = local.payment_sg_id
+}
+
 ## catalogue to mongodb sg rule
 resource "aws_security_group_rule" "mongodb_catalogue" {
   type              = "ingress"
@@ -169,23 +221,23 @@ resource "aws_security_group_rule" "redis_cart" {
   source_security_group_id = local.cart_sg_id
 }
 
-## cart to catalogue sg rule
+## cart to backend-alb(for catalogue) sg rule
 resource "aws_security_group_rule" "catalogue_cart" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
-  security_group_id = local.catalogue_sg_id
+  security_group_id = local.backend-alb_sg_id
   source_security_group_id = local.cart_sg_id
 }
 
-## shipping to cart sg rule
+## shipping to backend-alb(for cart) sg rule
 resource "aws_security_group_rule" "shipping_cart" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
-  security_group_id = local.cart_sg_id
+  security_group_id = local.backend-alb_sg_id
   source_security_group_id = local.shipping_sg_id
 }
 
@@ -199,23 +251,23 @@ resource "aws_security_group_rule" "shipping_mysql" {
   source_security_group_id = local.shipping_sg_id
 }
 
-## payment to cart sg rule
+## payment to backend-alb(for cart) sg rule
 resource "aws_security_group_rule" "cart_payment" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
-  security_group_id = local.cart_sg_id
+  security_group_id = local.backend-alb_sg_id
   source_security_group_id = local.payment_sg_id
 }
 
-## payment to user sg rule
+## payment to backend-alb(for user) sg rule
 resource "aws_security_group_rule" "user_payment" {
   type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
+  from_port         = 80
+  to_port           = 80
   protocol          = "tcp"
-  security_group_id = local.user_sg_id
+  security_group_id = local.backend-alb_sg_id
   source_security_group_id = local.payment_sg_id
 }
 
