@@ -222,7 +222,7 @@ resource "aws_security_group_rule" "redis_cart" {
 }
 
 ## cart to backend-alb(for catalogue) sg rule
-resource "aws_security_group_rule" "catalogue_cart" {
+resource "aws_security_group_rule" "backend-alb_cart" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
@@ -232,7 +232,7 @@ resource "aws_security_group_rule" "catalogue_cart" {
 }
 
 ## shipping to backend-alb(for cart) sg rule
-resource "aws_security_group_rule" "shipping_cart" {
+resource "aws_security_group_rule" "backend-alb_shipping" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
@@ -242,7 +242,7 @@ resource "aws_security_group_rule" "shipping_cart" {
 }
 
 ## shipping to mysql sg rule
-resource "aws_security_group_rule" "shipping_mysql" {
+resource "aws_security_group_rule" "mysql_shipping" {
   type              = "ingress"
   from_port         = 3306
   to_port           = 3306
@@ -251,18 +251,8 @@ resource "aws_security_group_rule" "shipping_mysql" {
   source_security_group_id = local.shipping_sg_id
 }
 
-## payment to backend-alb(for cart) sg rule
-resource "aws_security_group_rule" "cart_payment" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  security_group_id = local.backend-alb_sg_id
-  source_security_group_id = local.payment_sg_id
-}
-
-## payment to backend-alb(for user) sg rule
-resource "aws_security_group_rule" "user_payment" {
+## payment to backend-alb(for cart, user) sg rule
+resource "aws_security_group_rule" "backend-alb_payment" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
