@@ -2,7 +2,7 @@ module "backend_alb" {
   #source = "../../roboshop-terraform-modules/alb"
   source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//alb?ref=main"
   is_it_internal = true
-  #enable_deletion_protection = false
+  enable_deletion_protection = false
 }
 
 
