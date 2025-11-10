@@ -1,5 +1,5 @@
 module "db" {
-  for_each = var.db-components
+  for_each = toset(var.db-components)
   #source = "../../roboshop-terraform-modules/databases"
   source = "git::https://github.com/kdrajr/roboshop-terraform-modules.git//databases?ref=main"
   ami_id = local.ami_id

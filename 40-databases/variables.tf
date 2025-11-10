@@ -16,12 +16,13 @@ variable "domain_name" {
 }
 
 variable "db-components" {
-  default = {
+  default = ["mongodb","redis","rabbitmq","mysql"]
+  /* default = {
     mongodb = null
     redis = null
     rabbitmq = null
     mysql = null
-  }
+  } */
 }
 
 variable "ec2_tags" {
