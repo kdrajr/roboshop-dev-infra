@@ -274,8 +274,8 @@ resource "aws_security_group_rule" "frontend_frontend-alb" {
 ## Internet to frontend-alb sg rule
 resource "aws_security_group_rule" "frontend-alb_internet" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = 443
+  to_port           = 443
   protocol          = "tcp"
   security_group_id = local.frontend-alb_sg_id
   cidr_blocks       = ["0.0.0.0/0"]  
