@@ -8,14 +8,14 @@ resource "aws_security_group_rule" "bastion" {
   security_group_id = local.bastion_sg_id
 }
 
-## Internet to frontend sg rule
-resource "aws_security_group_rule" "frontend_internet" {
+## Bastion to frontend sg rule
+resource "aws_security_group_rule" "frontend_bastion" {
   type              = "ingress"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   security_group_id = local.frontend_sg_id
-  cidr_blocks       = ["0.0.0.0/0"]  
+  source_security_group_id = local.bastion_sg_id 
 }
 
 ## Bastion to mongodb sg rule
