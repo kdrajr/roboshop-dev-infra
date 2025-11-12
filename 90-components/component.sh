@@ -14,7 +14,7 @@ dnf install ansible -y
 
 #### install python packages in payment instance before executing ansible playbook ####
 if [ "$component" = "payment" ]; then
-   dnf update -y
+   dnf update -y --best --allowerasing python3 gcc openssl openssl-libs
    dnf install python3 gcc python3-devel -y
 fi
 #######################################################################################
