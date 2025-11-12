@@ -7,11 +7,15 @@ REPO_URL=https://github.com/kdrajr/ansible-roboshop-roles-tf.git
 ANSIBLE_DIR=/opt/roboshop/ansible
 REPO_DIR=ansible-roboshop-roles-tf
 mkdir -p $ANSIBLE_DIR
-
-
-dnf install ansible -y
 mkdir -p /var/log/roboshop
 touch /var/log/roboshop/ansible.log
+
+dnf install ansible -y
+# install python packages in payment instance before executing ansible playbook
+if [ "$component" = "payment" ]; then
+   dnf install python3 gcc python3-devel -y
+fi
+
 
 cd $ANSIBLE_DIR
 
