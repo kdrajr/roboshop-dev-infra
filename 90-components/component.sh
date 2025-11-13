@@ -12,12 +12,12 @@ touch /var/log/roboshop/ansible.log
 
 dnf install ansible -y
 
-#### install python packages in payment instance before executing ansible playbook ####
-# if [ "$component" = "payment" ]; then
-#    dnf update -y 
+#### install openssl packages in payment instance before executing ansible playbook to avoid openssl version mismatch error ####
+if [ "$component" = "payment" ]; then
+   dnf update openssl openssl-libs openssh openssh-server openssh-clients -y 
 #    dnf install python3 gcc python3-devel -y
-# fi
-#######################################################################################
+fi
+################################################################################################################################
 
 cd $ANSIBLE_DIR
 
