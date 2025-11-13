@@ -13,10 +13,10 @@ touch /var/log/roboshop/ansible.log
 dnf install ansible -y
 
 #### install python packages in payment instance before executing ansible playbook ####
-if [ "$component" = "payment" ]; then
-   dnf update -y 
-   dnf install python3 gcc python3-devel -y
-fi
+# if [ "$component" = "payment" ]; then
+#    dnf update -y 
+#    dnf install python3 gcc python3-devel -y
+# fi
 #######################################################################################
 
 cd $ANSIBLE_DIR
